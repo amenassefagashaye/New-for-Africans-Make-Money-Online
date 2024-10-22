@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airdrop Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e0f7fa;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    h1, h2, p {
+      color: #333;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #007bff;
+    }
+
+    h2 {
+      font-size: 1.8em;
+      color: #ff5722;
+    }
+
+    .container {
+      margin: 30px auto;
+      padding: 30px;
+      border: 5px solid;
+      border-image: linear-gradient(45deg, #ffeb3b, #ff5722, #4caf50) 1;
+      max-width: 90%;
+      box-sizing: border-box;
+      background-color: #fffde7;
+      border-radius: 15px;
+    }
+
+    .form-group {
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .form-group input {
+      width: 80%;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 2px solid #007bff;
+    }
+
+    .form-group button {
+      width: 40%;
+      padding: 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .form-group button:hover {
+      background-color: #0056b3;
+    }
+
+    .button-container button {
+      width: 90%;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 5px;
+      background-color: #00bcd4;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2em;
+    }
+
+    .button-container button:hover {
+      background-color: #008394;
+    }
+
+    .total-points {
+      padding: 15px;
+      background-color: #4caf50;
+      color: white;
+      border-radius: 5px;
+      margin: 20px 0;
+    }
+
+    .bold-outline {
+      padding: 20px;
+      border: 3px solid;
+      border-image: linear-gradient(45deg, #ffeb3b, #ff5722, #4caf50) 1;
+      margin: 20px;
+    }
+
+    .notification {
+      color: red;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .center-layout {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- First Page -->
+  <div class="container bold-outline center-layout">
+    <h2>New</h2>
+    <h1>Earn Money Online Now</h1>
+    <h2>October, 2024</h2>
+
+    <div class="form-group">
+      <input type="email" id="email" placeholder="Enter your email">
+      <input type="password" id="password" placeholder="Enter your password">
+      <button onclick="goToSecondPage()">Submit</button>
+    </div>
+  </div>
+
+  <!-- Second Page -->
+  <div id="secondPage" class="container bold-outline" style="display: none;">
+    <h1>Earn Money Online Now, October, 2024</h1>
+    <p>Complete all tasks to get points which can be changed to USDT to withdraw.</p>
+
+    <div class="total-points button-container">
+      <span id="totalPoints">Total Points: 0</span>
+      <button onclick="convertToDollar()">Convert to $</button>
+    </div>
+
+    <h1>Earning Now</h1>
+    <div class="button-container">
+      <button onclick="completeSurvey()">Survey</button>
+      <button onclick="joinTelegram()">Join Telegram</button>
+      <button onclick="joinFacebook()">Join Facebook</button>
+      <button onclick="subscribeYouTube()">Subscribe YouTube</button>
+      <button onclick="watchVideos()">Watch Videos</button>
+      <button onclick="joinTikTok()">Join TikTok</button>
+      <button onclick="claimBonus()">Bonus</button>
+      <button onclick="shareReferrals()">Referrals</button>
+      <button id="withdrawButton" onclick="withdraw()">Withdraw</button>
+    </div>
+
+    <p class="notification" id="withdrawNotification"></p>
+
+    <p>@ All rights reserved, 2024</p>
+  </div>
+
+  <script>
+    let totalPoints = 0;
+
+    function goToSecondPage() {
+      document.querySelector('.container').style.display = 'none';
+      document.getElementById('secondPage').style.display = 'block';
+    }
+
+    function addPoints(points) {
+      totalPoints += points;
+      document.getElementById('totalPoints').innerText = `Total Points: ${totalPoints}`;
+    }
+
+    function completeSurvey() {
+      const age = prompt("How old are you?");
+      const sex = prompt("What is your sex?");
+      const country = prompt("Which country are you from?");
+      const language = prompt("What language do you speak?");
+      if (age && sex && country && language) {
+        addPoints(80); // 4 questions * 20 points
+      }
+    }
+
+    function joinTelegram() {
+      window.open('https://t.me/GOGSmore', '_blank');
+      addPoints(1000);
+    }
+
+    function joinFacebook() {
+      window.open('https://www.facebook.com', '_blank');
+      addPoints(1000);
+    }
+
+    function subscribeYouTube() {
+      window.open('https://www.youtube.com/channel/UCLBivSEh30F44ptAAgEVRUA?sub_confirmation=1', '_blank');
+      addPoints(5000);
+    }
+
+    function watchVideos() {
+      window.open('https://www.youtube.com/channel/UCLBivSEh30F44ptAAgEVRUA', '_blank');
+      addPoints(2000);
+    }
+
+    function joinTikTok() {
+      window.open('https://www.tiktok.com/@assefagashaye', '_blank');
+      addPoints(1000);
+    }
+
+    function claimBonus() {
+      alert("You have earned 100 points!");
+      addPoints(100); // Add points for claiming bonus
+    }
+
+    function shareReferrals() {
+      window.open('https://t.me/YOUR_TELEGRAM_LINK', '_blank'); // Replace with the user's referral link
+      addPoints(1000);
+    }
+
+    function convertToDollar() {
+      const dollars = totalPoints / 500000;
+      alert(`You have earned $${dollars.toFixed(2)}`);
+    }
+
+    function withdraw() {
+      if (totalPoints >= 10000000) {
+        window.open('https://www.binance.com/en/earn', '_blank');
+      } else {
+        alert("You have insufficient balance to withdraw because you have below 10,000,000 points.");
+      }
+    }
+  </script>
+</body>
+</html>
